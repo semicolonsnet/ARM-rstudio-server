@@ -1,25 +1,6 @@
 # ARM-rstudio-server
-Build script for rstudio-server on an ARM Chromebook
+Build script for rstudio-server on an Raspberry Pi 3B+
 
-This is built on the excellent work of [dashaub/ARM-RStudio](https://github.com/dashaub/ARM-RStudio).
-
-## Build
-This script has been used to successfully build RStudio Server on an Acer CB5-311 Chromebook (ARM) running Debian 9 (stretch) via [crouton](https://github.com/dnschneid/crouton).  The commands below can be used to build the server
-```
-sudo enter-chroot -n stretch
-sudo croutonpowerd -i ./build_rstudio.sh
-```
-The build may take several hours to complete, and to prevent the Chromebook from suspending, it's recommended to use `crountonpowerd -i` and be plugged into AC power.
+Forked and tweaked from [jrowen/ARM-rstudio-server](https://github.com/jrowen/ARM-rstudio-server), which was built on the excellent work of [dashaub/ARM-RStudio](https://github.com/dashaub/ARM-RStudio).
 
 The `VERS` variable in the script can be updated to build different versions of the server.  The latest version number and be found on the rstudio server [download page](https://www.rstudio.com/products/rstudio/download-server/), and note that this will likely differ from the latest desktop version.
-
-## Launching RStudio Server
-After the server has been built and installed, the easiest way to start the server from a crosh shell using the commands below
-```
-sudo enter-chroot -n stretch
-sudo rstudio-server start
-```
-Finally, from a new Chrome tab navigate to `localhost:8787` and log in using your chroot credentials.
-
-## Contributions
-Please don't hesitate to file an issue if you run into problems, and pull requests are welcome.
