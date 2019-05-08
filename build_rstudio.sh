@@ -1,14 +1,23 @@
 #!/bin/bash
 # This script installs R and builds RStudio Desktop for ARM Chromebooks running debian stretch
 
+# Setup locale
+sudo apt-get install -y locales
+sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+echo 'export LANG=en_US.UTF-8' >> ~/.profile
+echo 'export LANGUAGE=en_US.UTF-8' >> ~/.profile
+
 # Install R; Debian stretch has latest version
 sudo apt-get update
 sudo apt-get install -y r-base r-base-dev
 
 # Set RStudio version
-VERS=v0.99.473
+VERS=v1.2.1335
 
 # Download RStudio source
+mkdir ~/Downloads/
 cd ~/Downloads/
 wget -O $VERS https://github.com/rstudio/rstudio/tarball/$VERS
 mkdir ~/Downloads/rstudio-$VERS
@@ -16,7 +25,7 @@ tar xvf ~/Downloads/$VERS -C ~/Downloads/rstudio-$VERS --strip-components 1
 rm ~/Downloads/$VERS
 
 # Run environment preparation scripts
-sudo apt-get install -y openjdk-7-jdk
+sudo apt-get install -y openjdk-8-jdk
 cd ~/Downloads/rstudio-$VERS/dependencies/linux/
 ./install-dependencies-debian --exclude-qt-sdk
 
