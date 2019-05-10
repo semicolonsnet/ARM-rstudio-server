@@ -36,12 +36,12 @@ sudo apt-get install -y pandoc
 sudo apt-get install -y libcurl4-openssl-dev
 
 cd ~/Downloads/rstudio-$VERS/dependencies/common/
-#./install-common
+./install-common
 ./install-gwt
 ./install-dictionaries
 ./install-mathjax
 ./install-boost
-#./install-pandoc
+./install-pandoc
 ./install-libclang
 ./install-packages
 
@@ -67,14 +67,6 @@ sudo cp /usr/local/lib/rstudio-server/extras/init.d/debian/rstudio-server /etc/i
 sudo chmod +x /etc/init.d/rstudio-server 
 sudo ln -f -s /usr/local/lib/rstudio-server/bin/rstudio-server /usr/sbin/rstudio-server
 sudo chmod 777 -R /usr/local/lib/R/site-library/
-
-# Setup locale
-sudo apt-get install -y locales
-sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-#echo 'export LANG=en_US.UTF-8' >> ~/.bashrc
-#echo 'export LANGUAGE=en_US.UTF-8' >> ~/.bashrc
 
 # Clean the system of packages used for building
 sudo apt-get autoremove -y cabal-install ghc openjdk-8-jdk pandoc libboost-all-dev
