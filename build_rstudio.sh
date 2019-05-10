@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script installs R and builds RStudio Desktop for ARM Chromebooks running debian stretch
+# This script installs R and builds RStudio Desktop for Raspberry Pis running Raspbian Stretch
 
 # Setup locale
 sudo apt-get install -y locales
