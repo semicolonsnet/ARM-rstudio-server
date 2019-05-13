@@ -14,7 +14,7 @@ sudo apt-get update
 sudo apt-get install -y r-base r-base-dev
 
 # Set RStudio version
-VERS=v1.2.1335
+VERS=v1.1.449
 
 # Download RStudio source
 mkdir ~/Downloads/
