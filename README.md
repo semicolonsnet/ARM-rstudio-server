@@ -15,8 +15,7 @@ Forked and tweaked from [jrowen/ARM-rstudio-server](https://github.com/jrowen/AR
 
 Results of [R-benchmark-25](https://mac.r-project.org/benchmarks/) on Raspberry Pi 4B w 4 GB RAM running Raspbian Stretch (R 3.5.2 , RStudio 1.2.1335):
 
-`
-   R Benchmark 2.5
+`R Benchmark 2.5
    ===============
 Number of times each test is run__________________________:  3
 
@@ -54,5 +53,4 @@ Escoufier's method on a 45x45 matrix (mixed)________ (sec):  1.08300000000008
 Total time for all 15 tests_________________________ (sec):  86.2596666666665 
 Overall mean (sum of I, II and III trimmed means/3)_ (sec):  3.03756391468908 
                       --- End of test ---
-
 `
