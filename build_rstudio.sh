@@ -14,7 +14,7 @@ sudo apt-get update
 sudo apt-get install -y r-base r-base-dev
 
 # Set RStudio version
-VERS=v1.1.449
+VERS=v1.2.1335
 
 # Download RStudio source
 mkdir ~/Downloads/
@@ -55,16 +55,20 @@ unzip compiler-latest.zip
 rm COPYING README.md compiler-latest.zip
 sudo mv closure-compiler*.jar ~/Downloads/rstudio-$VERS/src/gwt/tools/compiler/compiler.jar
 
+# Manually substitute libssl1.0-dev
+sudo apt install -y libssl1.0-dev
+
 # Configure cmake and build RStudio
 cd ~/Downloads/rstudio-$VERS/
 mkdir build
-sudo cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release
+sudo cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release -DOPENSSL_ROOT_DIR=/usr/lib/ssl -DOPENSSL_LIBRARIES=/usr/lib/ssl
 sudo make install
 
 # Additional install steps
 sudo useradd -r rstudio-server
 sudo cp /usr/local/lib/rstudio-server/extras/init.d/debian/rstudio-server /etc/init.d/rstudio-server
 sudo chmod +x /etc/init.d/rstudio-server 
+sudo cp /usr/local/lib/rstudio-server/extras/systemd/rstudio-server.service /lib/systemd/system/rstudio-server.service
 sudo ln -f -s /usr/local/lib/rstudio-server/bin/rstudio-server /usr/sbin/rstudio-server
 sudo chmod 777 -R /usr/local/lib/R/site-library/
 
